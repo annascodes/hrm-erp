@@ -20,16 +20,44 @@ const DynamicTable = ({ data }) => {
   const keys = Object.keys(data);
 
   // Helper function to format values for display
+  // const formatValue = (value) => {
+  //   if (typeof value === 'object' && value !== null) {
+  //     // For objects or arrays, stringify them for display
+  //     return <pre className="whitespace-pre-wrap break-all text-sm">{JSON.stringify(value, null, 2)}</pre>;
+  //   }
+  //   // For boolean values, display as 'true' or 'false'
+  //   if (typeof value === 'boolean') {
+  //     return value.toString();
+  //   }
+  //   // For other primitive types (string, number), display directly
+  //   return value;
+  // };
   const formatValue = (value) => {
-    if (typeof value === 'object' && value !== null) {
-      // For objects or arrays, stringify them for display
-      return <pre className="whitespace-pre-wrap break-all text-sm">{JSON.stringify(value, null, 2)}</pre>;
+    // If value is a valid React element or fragment, just return it
+    if (React.isValidElement(value)) {
+      return value;
     }
-    // For boolean values, display as 'true' or 'false'
-    if (typeof value === 'boolean') {
+
+    // If it's an array of nodes/values, map over them
+    if (Array.isArray(value)) {
+      return value.map((v, i) => <React.Fragment key={i}>{formatValue(v)}</React.Fragment>);
+    }
+
+    // For plain objects, stringify
+    if (typeof value === "object" && value !== null) {
+      return (
+        <pre className="whitespace-pre-wrap break-all text-sm">
+          {JSON.stringify(value, null, 2)}
+        </pre>
+      );
+    }
+
+    // For booleans
+    if (typeof value === "boolean") {
       return value.toString();
     }
-    // For other primitive types (string, number), display directly
+
+    // For string, number, null, undefined
     return value;
   };
 

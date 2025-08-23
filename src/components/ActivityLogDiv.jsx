@@ -4,6 +4,7 @@ import moment from 'moment'
 import RoleBadges from './RoleBadges'
 import { HiAtSymbol } from 'react-icons/hi2'
 import AuditActions from './AuditActions'
+import ActivityMetaRenderer from './ActivityMetaRenderer'
 
 const ActivityLogDiv = ({ action: a = null }) => {
     return (a &&
@@ -31,6 +32,7 @@ const ActivityLogDiv = ({ action: a = null }) => {
 
 
                     {a.desc}
+                    <ActivityMetaRenderer action={a.action} meta={a.meta} />
 
 
                 </h1>

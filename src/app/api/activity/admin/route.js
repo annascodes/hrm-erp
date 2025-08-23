@@ -1,6 +1,8 @@
 import { dbConnect } from "@/lib/dbConnection";
 import { verifyAuth } from "@/lib/middleware/verifyAuth";
 import AuditLog from "@/lib/models/auditLogModel";
+import User from "@/lib/models/userModel";
+import Employee from "@/lib/models/employeeModel";
 import moment from "moment";
 import { NextResponse } from "next/server";
 
@@ -27,6 +29,7 @@ export async function GET(req, { params }) {
         query.user = auth.id;
     }
 
+    console.log(query)
     const acitivity = await AuditLog.find(query)
         .populate('user', 'username role')
         .populate('targetId')

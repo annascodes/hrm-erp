@@ -7,6 +7,10 @@ import { TiUserAddOutline } from "react-icons/ti";
 import { TbFileExcel } from "react-icons/tb";
 import { TbFilePlus } from "react-icons/tb";
 import { TbFileCheck } from "react-icons/tb";
+import { LuUserPen } from "react-icons/lu";
+import { LuUserPlus } from "react-icons/lu";
+
+
 
 
 
@@ -17,10 +21,12 @@ import { TbFileCheck } from "react-icons/tb";
 'Logged In'
 'Logged Out' 
 'Registered'
- 'Leave posted',
+'Leave posted',
 'Employee created'
 'Leave Approved'
 'Leave Rejected'
+'Update User'
+'Update Employee'
 
 }
  */
@@ -45,7 +51,7 @@ const AuditActions = ({action=null , className=null}) => {
         }
         {
 
-            action === 'Employee created'  && <TiUserAddOutline className={`${className} text-gray-900`} />
+            action === 'Employee created'  && <LuUserPlus className={`${className} text-gray-900`} />
 
         }
         {
@@ -61,6 +67,16 @@ const AuditActions = ({action=null , className=null}) => {
         {
 
             action ===  'Leave Approved '  && <TbFileCheck className={`${className} text-gray-900`} />
+
+        }
+        {
+
+            action ===  'Update User'  && <LuUserPen className={`${className} text-gray-900`} />
+
+        }
+        {
+
+            action ===  'Update Employee'  && <LuUserPen className={`${className} text-gray-900`} />
 
         }
       

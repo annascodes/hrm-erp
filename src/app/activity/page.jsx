@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import ActivityLogDiv from '@/components/ActivityLogDiv';
 import moment from 'moment';
 import { MdCancel } from 'react-icons/md';
+import { ActivityActions } from '@/lib/helperFunctions';
 
 
 const page = () => {
@@ -51,24 +52,22 @@ const page = () => {
             <div className='flex flex-wrap justify-around gap-4 mb-10  '>
                 <div>
                     <h1 className='text-5xl font-extrabold  '>Activity Log</h1>
-                    {/* {
-                        date &&
-                        <div className='mt-3 flex flex-row items-center gap-1 '>
 
-
-                            <span className='btn mr-1 btn-warning btn-xs tracking-widest'>filtered by </span>
-                            <span>{moment(new Date()).format('dddd, Do MMMM YYYY')}</span>
-                            <button className='btn btn-neutral btn-outline btn-xs tracking-widest'>cancel</button>
-
-
-                        </div>
-
-                    } */}
 
                 </div>
 
                 <div className='flex flex-row items-center gap-2'>
                     <input onChange={(e) => setDate(e.target.value)} type="date" className="input" />
+                    <select defaultValue="Pick a color" className="select w-60">
+                        <option disabled={true}>Pick tag</option>
+                        {
+                            ActivityActions.map((a, i) => {
+                                return (
+                                    <option key={`${i}-ActivityAction`} value={a} >{a}</option>
+                                )
+                            })
+                        }
+                    </select>
 
                     <button onClick={handleDate} className='btn btn-neutral btn-outline btn-sm m-2 tracking-wider'>Go</button>
                 </div>
@@ -79,14 +78,14 @@ const page = () => {
             }
 
             <div>
-                <button 
-                onClick={()=>{
-                    setActivities(null)
-                    setStartIndex(0)
-                    setDate(null)
-                     request(`/api/activity/admin?startIndex=${startIndex}&limit=${limit}`)
-                }}
-                className='mx-2 btn btn-neutral btn-outline btn-xs tracking-widest'>refresh</button>
+                <button
+                    onClick={() => {
+                        setActivities(null)
+                        setStartIndex(0)
+                        setDate(null)
+                        request(`/api/activity/admin?startIndex=${startIndex}&limit=${limit}`)
+                    }}
+                    className='mx-2 btn btn-neutral btn-outline btn-xs tracking-widest'>refresh</button>
             </div>
             {
                 activities && activities.map((a, i) => {
@@ -115,7 +114,7 @@ const page = () => {
 
 
 
-{/* 
+            {/* 
             <pre className='text-xs'>
                 {activities && JSON.stringify(activities, null, 10)}
             </pre> */}

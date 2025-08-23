@@ -77,3 +77,68 @@ export async function POST(req, { params }) {
     }
     return NextResponse.json({ updateUser: restUser, newLeaveBalance })
 }
+
+
+export async function PUT(req, {params}) {
+    const auth = await verifyAuth()
+    const authUser = await User.findById(auth.id)
+    if (!authUser) return NextResponse.json({error: 'auth user did not find'}, {status: 404})
+    const {userId} =  await params;
+
+    if(!(auth.role ==='admin' || auth.role ==='hr' || auth.id === userId.toString()))
+        return NextResponse.json({error: 'Not authorized to this action.'}, {status: 409})
+
+    const body = await  req.json()
+    await dbConnect()
+    const employee = await Employee.findOne({userId: auth.id})
+    if(!employee)
+        return NextResponse.json({error: 'No employee found under this userId'}, {status: 404})
+
+    const UpdEmp = await Employee.findByIdAndUpdate(
+        employee._id,
+        {
+            $set:{
+                ...(body.firstName && {firstName : body.firstName}),
+                ...(body.lastName && {lastName : body.lastName}),
+                ...(body.employeeCode && {employeeCode : body.employeeCode}),
+                ...(body.email && {email : body.email}),
+                ...(body.phoneNumber && {phoneNumber : body.phoneNumber}),
+                ...(body.address && {address : body.address}),
+                ...(body.dateOfBirth && {dateOfBirth : body.dateOfBirth}),
+                ...(body.hireDate && {hireDate : body.hireDate}),
+                ...(body.jobTitle && {jobTitle : body.jobTitle}),
+                ...(body.department && {department : body.department}),
+                ...(body.salary && {salary : body.salary}),
+                ...(body.status && {status : body.status}),
+            }
+        },{new:true}
+    )
+
+    try {
+        await UpdEmp.save()
+    } catch (error) {
+        return NextResponse.json({error: 'Error in saving updation of employee'},{status: 500})
+    }
+
+    const newAudit = await AuditLog(
+        {
+            user: auth.id,
+            action: 'Update Employee',
+            desc: `${authUser?.username} who is ${authUser.role} update this employee ${employee.firstName} ${employee.lastName}.`,
+            target: 'Employee',
+            targetId: UpdEmp._id,
+            meta: {
+                before: employee,
+                after: UpdEmp
+            }
+        }
+    )
+    try {
+        await newAudit.save()
+    } catch (error) {
+        return NextResponse.json({error: 'Error in saving audit in /api/employee/[userId]/route.js - PUT; while updating employee profile.'},{status: 500})
+    }
+
+
+    return NextResponse.json(UpdEmp)
+}

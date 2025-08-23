@@ -1,13 +1,14 @@
 'use client'
+import moment from 'moment';
 import React, { useState } from 'react';
 
 
 // UserRegistrationForm Component
-const UserRegistrationForm = ( {handleUserReg=null, loading = false} ) => {
+const UserRegistrationForm = ( {handleUserReg=null, loading = false,btnName='Register User', formName='User Registration', preFill=null} ) => {
   // State to hold form input values
   const [formData, setFormData] = useState({
-    email: '',
-    username: '',
+    email: preFill?.email,
+    username: preFill?.username,
     password: '',
     // profileImg: 'https://static.vecteezy.com/system/resources/previews/036/744/532/non_2x/user-profile-icon-symbol-template-free-vector.jpg', // Default from schema
     // role: 'employee', // Default from schema
@@ -34,8 +35,8 @@ const UserRegistrationForm = ( {handleUserReg=null, loading = false} ) => {
   };
 
   return (
-    <form  className="card bg-base-100 max-w-2xl mx-auto shadow-xl p-6 md:p-8 rounded-lg">
-        <h1 className='text-2xl font-bold text-center mb-10'> User Registration</h1>
+    <form  className="card bg-base-100 max-w-2xl mx-auto shadow-2xl  p-6 md:p-8 rounded-lg">
+        <h1 className='text-2xl font-bold text-center mb-10'>{formName}</h1>
       {/* Email Input */}
       <div className="form-control mb-4">
         <label className="label">
@@ -48,7 +49,7 @@ const UserRegistrationForm = ( {handleUserReg=null, loading = false} ) => {
           className="input input-bordered w-full rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={formData.email}
           onChange={handleChange}
-          required
+        
         />
       </div>
 
@@ -64,7 +65,7 @@ const UserRegistrationForm = ( {handleUserReg=null, loading = false} ) => {
           className="input input-bordered w-full rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={formData.username}
           onChange={handleChange}
-          required
+        
         />
       </div>
 
@@ -80,7 +81,7 @@ const UserRegistrationForm = ( {handleUserReg=null, loading = false} ) => {
           className="input input-bordered w-full rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           value={formData.password}
           onChange={handleChange}
-          required
+     
         />
       </div>
 
@@ -143,11 +144,20 @@ const UserRegistrationForm = ( {handleUserReg=null, loading = false} ) => {
           {loading ? (
             <span className="loading loading-spinner loading-sm"></span>
           ) : (
-            'Register User'
+            btnName
           )}
         </button>
       </div>
 
+
+ 
+
+      {
+        preFill &&
+        <div className='my-5 text-xs'>
+          Last updated <span className='btn btn-active cursor-default  btn-primary tracking-wider btn-xs mx-2 '>{moment(preFill?.updatedAt).fromNow()} </span>
+        </div>
+      }
       
     </form>
   );

@@ -8,14 +8,13 @@ import { LuSquareUserRound } from "react-icons/lu";
 import { GrUserWorker } from "react-icons/gr";
 import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { LuCalendarDays } from "react-icons/lu";
- 
+
 
 
 
 
 import { FaUmbrellaBeach, FaHeartbeat, FaRegSmileBeam, FaMoneyBillAlt } from "react-icons/fa";
 import StatDiv from '@/components/StatDiv';
-import { BiUser } from 'react-icons/bi';
 import { FiAtSign, FiMail } from 'react-icons/fi';
 import moment from 'moment';
 
@@ -24,17 +23,14 @@ const page = ({ params }) => {
   const { userId } = unWrapParams;
   const { request, data, loading, err } = useApiReq()
   useEffect(() => {
-    // request(`/api/user/${userId}`)
+    request(`/api/user/${userId}`)
   }, [])
+  
 
   return (
     <div className='max-w-7xl m-5 mx-auto '>
       {loading && <Loading />}
-      {/* <pre>
-        {JSON.stringify(data, null, 10)}
-      </pre> */}
-
-
+     
       <div className='relative h-44 rounded-2xl'>
         <img src="https://cdn.dribbble.com/userupload/12008583/file/original-5d877be0dbb7e50ed67aaa7472e6d1cd.png?resize=1024x768&vertical=center" alt="" className='w-full h-full object-cover rounded-2xl opacity-75' />
 
@@ -46,7 +42,7 @@ const page = ({ params }) => {
 
       <div className='flex flex-row flex-wrap justify-center mt-20 '>
 
-          {/* first */}
+        {/* first */}
         <div className='w-1/2 flex flex-col gap-3 p-5 '>
 
           <div className='flex flex-row items-center gap-3'>
@@ -74,7 +70,7 @@ const page = ({ params }) => {
             </div>
             <h1>anas@test.com</h1>
           </div>
-          
+
 
 
           <div className='flex flex-row items-center gap-3'>
@@ -84,10 +80,10 @@ const page = ({ params }) => {
             </div>
             <h1>Sales Manager <span className='mx-2'>|</span> Sales Depart. </h1>
             {/* <span className='tracking-widest text-xs text-gray-400'> Sales Department </span> */}
-              <LuSquareArrowOutUpRight className='text-xl cursor-pointer text-blue-400' />
+            <LuSquareArrowOutUpRight className='text-xl cursor-pointer text-blue-400' />
           </div>
-          
-          
+
+
           <div className='flex flex-row items-center gap-3'>
             <div className='flex flex-row items-center gap-1 font-extrabold '>
               <LuCalendarDays className='text-xl' />
@@ -113,23 +109,9 @@ const page = ({ params }) => {
 
       </div>
 
-      {/* <div className='flex gap-2'>
-        <div className='border-0 p-5 rounded-xl mx-auto '>
-          <h1 className='text-center text-xl mb-3'>Leave Balance</h1>
-          <div className=' flex flex-row flex-wrap gap-4 justify-center items-center'>
-            <LeaveBalanceHolidays name={'Annual'} total={5}
-              css={'bg-green-50 text-green-400'} />
-            <LeaveBalanceHolidays name={'Casual'} total={5}
-              css={'bg-yellow-50 text-yellow-400'} />
-            <LeaveBalanceHolidays name={'Sick'} total={5}
-              css={'bg-blue-50 text-blue-400'} />
-            <LeaveBalanceHolidays name={'Unpaid'} total={5}
-              css={'bg-orange-50 text-orange-400'} />
-            <LeaveBalanceHolidays name={'Total'} total={5}
-              css={'bg-blue-50 text-blue-400'} />
-          </div>
-        </div>
-      </div> */}
+       <pre className='text-xs'>
+        {JSON.stringify(data, null, 10)}
+      </pre>
     </div>
   )
 }

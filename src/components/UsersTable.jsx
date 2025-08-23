@@ -2,6 +2,7 @@ import moment from 'moment'
 import React from 'react'
 import RoleBadges from './RoleBadges'
 import UserTableFilter from './UserTableFilter'
+import Link from 'next/link'
 
 const UsersTable = ({ users = null }) => {
     return (
@@ -84,7 +85,7 @@ const UsersTable = ({ users = null }) => {
 
             <table className="table table-md">
                 <thead>
-                    <UserTableFilter/>
+                    <UserTableFilter />
                     <tr>
                         <th></th>
                         <th>username</th>
@@ -99,14 +100,16 @@ const UsersTable = ({ users = null }) => {
                     {
                         users && users.map((u, i) => {
                             return (
-                                <tr className='hover:bg-blue-50 rounded-3xl'key={u._id} >
+                                <tr className='hover:bg-blue-50 rounded-3xl' key={u._id} >
                                     <td></td>
-                                    <td>{u.username}</td>
+                                    <td>
+                                        <Link className='underline underline-offset-2' href={`/profile/${u.username}`}>{u.username}</Link>
+                                    </td>
                                     <td>{u.email}</td>
                                     <td>
                                         {moment(u.createdAt).format('ddd Do MMMM YYYY')}
                                         {/* {u.createdAt} */}
-                                        </td>
+                                    </td>
                                     <td>
                                         <RoleBadges role={u.role} />
                                     </td>
