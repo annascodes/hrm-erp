@@ -3,7 +3,7 @@ import React from 'react';
 
 
 // DynamicTable Component: Renders an object's keys and values in a DaisyUI table.
-const DynamicTable = ({ data }) => {
+const DynamicTable = ({ data, heading=null }) => {
   // Ensure data is an object and not null/undefined
   if (!data || typeof data !== 'object') {
     return (
@@ -63,6 +63,9 @@ const DynamicTable = ({ data }) => {
 
   return (
     <div className="overflow-x-auto rounded-lg shadow-xl">
+      {heading && 
+      <p className='text-3xl text-center font-bold my-5'>{heading}</p>
+      }
       <table className="table w-full table-zebra">
         {/* Table head */}
         <thead>

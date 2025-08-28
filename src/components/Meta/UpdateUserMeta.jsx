@@ -20,14 +20,29 @@ const UpdateUserMeta = ({ action, meta }) => {
 
                         <DynamicTable data={getChanges(meta.before, meta.after)} />
 
-                        <p>  User created on 
-                            <span className='bg-yellow-200 rounded-md p-0.5'> {moment(meta.before.createdAt).format("dddd, Do MMMM YYYY [at] h:mm a")} </span>
-                           .
+                        <p>  User created on
+                            <span className='bg-yellow-200 rounded-md p-0.5'> {moment(meta.before.createdAt).format("dddd, Do MMMM YYYY [at] h:mm a")}
+                            </span>
+                            <span className='badge badge-accent tracking-wider badge-xs mx-1'>
+                                {moment(meta.before.createdAt).fromNow()}
+                            </span>
+                            .
                         </p>
                         <p className='leading-8'>Last time it was updated on
-                            <span className='bg-yellow-200 rounded-md p-0.5 m-0.5'> {moment(meta.before.updatedAt).format("dddd, Do MMMM YYYY [at] h:mm a")} </span>
+                            <span className='bg-yellow-200 rounded-md p-0.5 m-0.5'> {moment(meta.before.updatedAt).format("dddd, Do MMMM YYYY [at] h:mm a")}
+                            </span>
+                            <span className='badge badge-accent tracking-wider badge-xs'>
+                                {moment(meta.before.updatedAt).fromNow()}
+                            </span>
+
+
                             and this time
-                            <span className='bg-yellow-200 rounded-md p-0.5 m-0.5'> {moment(meta.after.updatedAt).format("dddd, Do MMMM YYYY [at] h:mm a")} </span> .
+                            <span className='bg-yellow-200 rounded-md p-0.5 m-0.5'> {moment(meta.after.updatedAt).format("dddd, Do MMMM YYYY [at] h:mm a")}
+                            </span> 
+                            <span className='badge badge-accent tracking-wider badge-xs'>
+                                {moment(meta.after.updatedAt).fromNow()}
+                            </span>
+                            .
                         </p>
 
                         <div className='flex flex-row flex-wrap gap-3 items-center justify-center'>

@@ -19,13 +19,13 @@ export async function POST(req, { params }) {
 
     const isAlreadyEmp = await Employee.findOne({ userId })
     if (isAlreadyEmp) return NextResponse.json({ error: 'Already employee id has assigned' }, { status: 403 })
-    console.log(body)
+    // console.log(body)
 
 
     const newEmployee = new Employee({ ...body, userId, createdBy: auth.id })
     try {
         await newEmployee.save()
-        console.log("Employee saved:", newEmployee)
+        // console.log("Employee saved:", newEmployee)
     } catch (err) {
         console.error("Error saving employee:", err)
         return NextResponse.json({ error: "Failed to save employee" }, { status: 500 })
@@ -90,7 +90,7 @@ export async function PUT(req, {params}) {
 
     const body = await  req.json()
     await dbConnect()
-    const employee = await Employee.findOne({userId: auth.id})
+    const employee = await Employee.findOne({userId})
     if(!employee)
         return NextResponse.json({error: 'No employee found under this userId'}, {status: 404})
 

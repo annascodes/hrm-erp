@@ -42,7 +42,7 @@ const EmployeeForm = ({ user = null , setCreated=null }) => {
     useEffect(() => {
         if (data && data.updateUser && data.newEmployee) {
             toast.success(`Employe Id has assigned to ${data.updateUser.username} which is ${data.updateUser.employeeId}`)
-            console.log(data)
+            // console.log(data)
             if(setCreated)
                 setCreated(true)
         }   

@@ -31,7 +31,7 @@ const LeaveRequestForm = ({ userId }) => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default browser form submission
-    console.log(formData)
+    // console.log(formData)
     let inDays = getLeaveDays(formData.startDate, formData.endDate)
     if (inDays > 1)
       request(`/api/employee/${userId}/leave`, 'POST', formData)
@@ -41,7 +41,7 @@ const LeaveRequestForm = ({ userId }) => {
 
   useEffect(() => {
     if (data && data.success) {
-      console.log('data: ', data)
+      // console.log('data: ', data)
       toast.success(data.msg)
       setFormData({
         leaveType: 'Sick Leave', // Default value from enum

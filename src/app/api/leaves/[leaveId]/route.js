@@ -41,7 +41,7 @@ export async function PUT(req, { params }) {
 
     let balancingLeave;
     if (!leaveBalance && body.response === 'Approved') {
-        console.log(`--------creating new leavebalance-------`.bgYellow)
+        // console.log(`--------creating new leavebalance-------`.bgYellow)
         balancingLeave = new LeaveBalance({
             employee: body.employeeId,
             ...(body.leaveType === 'Annual Leave' && { annual: requestedLeaveDays }),
@@ -58,7 +58,7 @@ export async function PUT(req, { params }) {
     }
     if (leaveBalance  && body.response === 'Approved') {
         // add days under leave type
-         console.log(`--------appending existing leavebalance-------`.bgYellow)
+        //  console.log(`--------appending existing leavebalance-------`.bgYellow)
         balancingLeave = await LeaveBalance.findOneAndUpdate(
             {
                 employee: body.employeeId

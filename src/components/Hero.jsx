@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Hero = () => {
@@ -10,13 +11,13 @@ const Hero = () => {
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div className=" max-w-2xl">
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
+            <h1 className="text-5xl font-bold">HRM-ERP system.</h1>
             <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-              quasi. In deleniti eaque aut repudiandae et a id nisi.
+                          Manage everything and anything in one place. This is humane resource management system where you can manage your employees and their related actions.
+
             </p>
-            <button className="btn btn-primary ml-2">Get Registered</button>
-            <button className="btn btn-primary btn-outline  ml-2">Let's login.</button>
+            <Link href={'/register'}  className="btn btn-primary ml-2 ">Get Registered</Link>
+            <Link href={'/login'} className="btn btn-primary btn-outline  ml-2">Let's login.</Link>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 import { logout as reduxLogout } from '@/lib/redux/user/userSlice'
+import { redirect } from 'next/navigation'
 
 const Logout = () => {
     const { user, logout } = useUser()
@@ -20,7 +21,11 @@ const Logout = () => {
     useEffect(() => {
 
         if (data)
+        {
             toast.success(data.msg)
+            redirect('/login')
+        }
+
     }, [data])
     useEffect(() => {
         if (err) toast.err('Error in logging out.')

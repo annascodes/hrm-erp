@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { signIn } from '@/lib/redux/user/userSlice'
 import { useDispatch } from 'react-redux'
+import ErrDiv from '@/components/ErrDiv'
 
 const page = () => {
     const {login} = useUser()
@@ -18,6 +19,17 @@ const page = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
+        if(!username || username.trim() === ''){
+            toast.error('Enter valid username !!!')
+            return
+        }
+        if(!password || password === ''){
+            toast.error('Enter valid password !!!')
+            return
+        }
+            
+        // console.log('username', username)
+        // console.log('password', password)
         request(`/api/login`, 'POST', { username, password })
     }
     useEffect(() => {
@@ -45,6 +57,11 @@ const page = () => {
             >
                 <InputField prompt={'Username'} className={'w-full'} setValue={setUsername} />
                 <InputField prompt={'Password'} className={'w-full'} type={'password'} setValue={setPassword} />
+
+                {
+                    err && 
+                    <ErrDiv error={err?.error} />
+                }
                 <div className='flex justify-center '>
                     <button disabled={loading} onClick={handleLogin} className='btn btn-neutral btn-outline btn-sm mt-5'>
                         {loading ? <Loading/> : 'Login' }

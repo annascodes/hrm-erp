@@ -17,7 +17,7 @@ const page = () => {
 
     }
     const handleFilter = (formDate)=>{
-        console.log('employee filter tome: ',formDate)
+        // console.log('employee filter tome: ',formDate)
         handleFetchLeaves(formDate)
     }
 

@@ -5,13 +5,17 @@ import User from "@/lib/models/userModel";
 import { NextResponse } from "next/server";
 import bcrypt from 'bcryptjs'
 import AuditLog from "@/lib/models/auditLogModel";
+import LeaveBalance from "@/lib/models/leaveBalanceModel";
 
 export async function GET(req, { params }) {
     const { username } = await params;
     await dbConnect()
     const user = await User.findOne({ username })
-    const employee = await Employee.findOne({ userId: user._id })
-    return NextResponse.json({ user, employee })
+    const employee = await Employee.findOne({ userId: user._id }).populate('userId', 'username role').populate('createdBy', 'username role')
+    let leaveBalance = null;
+    if (employee)
+        leaveBalance = await LeaveBalance.findOne({ employee: employee._id })
+    return NextResponse.json({ user, employee, leaveBalance })
 }
 export async function POST(req, { params }) {
     const { username } = await params;
@@ -62,7 +66,7 @@ export async function POST(req, { params }) {
     try {
         await newAudit.save()
     } catch (error) {
-        return NextResponse.json({error: 'Err in saving audit for update user /api/user/[username]/route.js - POST'}, {status: 500})
+        return NextResponse.json({ error: 'Err in saving audit for update user /api/user/[username]/route.js - POST' }, { status: 500 })
     }
 
 

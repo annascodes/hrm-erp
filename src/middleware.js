@@ -19,13 +19,13 @@ export async function middleware(request) {
     try {
       const { payload } = await jwtVerify(token, secret)
       user = payload
-      console.log("Verified User:", user)
+      // console.log("Verified User:", user)
     } catch (err) {
       console.error("JWT verification failed:", err)
     }
   }
 
-  const protectedPaths = ['/employee', '/leaves', '/profile', '/users']
+  const protectedPaths = ['/employee', '/leaves', '/profile', '/users','/activity', '/profile', '/users']
   const isProtected = protectedPaths.some(path =>
     request.nextUrl.pathname.startsWith(path)
   )

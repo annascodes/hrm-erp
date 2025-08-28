@@ -6,7 +6,7 @@ import AuditLog from "@/lib/models/auditLogModel";
 
 export async function POST(req) {
     const body = await req.json()
-    console.log(body)
+    // console.log(body)
 
     await dbConnect()
     const isExist = await User.findOne(

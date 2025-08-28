@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           <UserProvider>
             <Nav />
             {children}
-            <Toaster />
+            <Toaster position="top-right" />
           </UserProvider>
         </ReduxProvider>
 

@@ -18,7 +18,7 @@ const page = ({ params }) => {
 
 
     const handleUpdateUser = (data) => {
-        console.log('updating user :', data)
+        // console.log('updating user :', data)
         UpdUser(`/api/user/${userId}`, 'POST', data)
 
     }
@@ -56,9 +56,9 @@ const page = ({ params }) => {
 
 
 
-            <pre className='text-xs'>
+            {/* <pre className='text-xs'>
                 {JSON.stringify(UpdUserRes, null, 10)}
-            </pre>
+            </pre> */}
         </div>
     )
 }

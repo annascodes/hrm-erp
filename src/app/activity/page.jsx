@@ -21,10 +21,10 @@ const page = () => {
         if (data) {
 
             if (startIndex === 0) {
-                console.log("initial load");
+                // console.log("initial load");
                 setActivities(data);
             } else {
-                console.log("pagination load");
+                // console.log("pagination load");
                 setActivities(prev => [...prev, ...data]);
             }
 
@@ -46,7 +46,7 @@ const page = () => {
         setStartIndex(0)
         request(`/api/activity/admin?date=${date}`)
     }
-    console.log('activities: ', activities)
+    // console.log('activities: ', activities)
     return (
         <div className='md:p-5 '>
             <div className='flex flex-wrap justify-around gap-4 mb-10  '>

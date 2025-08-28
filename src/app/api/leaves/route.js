@@ -9,7 +9,7 @@ export async function GET(req, { params }) {
         return NextResponse.json({ error: "You'r neither admin nor hr" }, { status: 403 })
 
     const { searchParams } = new URL(req.url);
-    console.log(searchParams)
+    // console.log(searchParams)
     const status = searchParams.get('status')
     const onlyPendingCount = searchParams.get('onlyPendingCount') || false
     // from here to 

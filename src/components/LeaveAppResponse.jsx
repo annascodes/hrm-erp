@@ -44,8 +44,8 @@ const LeaveAppResponse = ({ leave = null }) => {
         }
 
     }, [data, err])
-    console.log('data in leaveappresponse', data)
-    console.log('err in leaveappresponse', err)
+    // console.log('data in leaveappresponse', data)
+    // console.log('err in leaveappresponse', err)
 
     return user && (
         <div>

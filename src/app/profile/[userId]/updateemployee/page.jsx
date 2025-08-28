@@ -18,7 +18,7 @@ const page = ({ params }) => {
 
 
     const handleUpdate = (data) => {
-        console.log('updating user ', data)
+        // console.log('updating user ', data)
         if(data.userId)
             UpdEmp(`/api/employee/${data.userId}`, 'PUT', data)
        
@@ -54,9 +54,9 @@ const page = ({ params }) => {
             {/* <pre className='text-xs my-20'>
                 {data && JSON.stringify(data, null, 10)}
             </pre> */}
-            <pre className='text-xs'>
+            {/* <pre className='text-xs'>
                 {UpdEmpRes && JSON.stringify(UpdEmpRes, null, 10)}
-            </pre>
+            </pre> */}
         </div>
     )
 }

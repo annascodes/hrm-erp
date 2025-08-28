@@ -29,7 +29,7 @@ export async function GET(req, { params }) {
         query.user = auth.id;
     }
 
-    console.log(query)
+    // console.log(query)
     const acitivity = await AuditLog.find(query)
         .populate('user', 'username role')
         .populate('targetId')
