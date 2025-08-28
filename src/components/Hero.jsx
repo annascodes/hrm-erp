@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="hero-content    shadow-2xl flex-col lg:flex-row-reverse">
           <img
             src="https://i.pinimg.com/1200x/6c/9b/27/6c9b27f2f01c3f40d5518516116ac86a.jpg"
-            className="max-w-sm rounded-lg shadow-2xl"
+            className="max-w-xs rounded-lg shadow-2xl"
           />
           <div className=" max-w-2xl">
             <h1 className="text-5xl font-bold">HRM-ERP system.</h1>
