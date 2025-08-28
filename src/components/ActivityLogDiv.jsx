@@ -40,7 +40,7 @@ const ActivityLogDiv = ({ action: a = null }) => {
                 <div className='flex justify-between'>
                     <div className='[word-spacing:0.1rem] text-xs '>
 
-                        <span className='btn btn-outline tracking-widest mr-2 btn-xs'> {moment(a.createdAt).fromNow()}</span>
+                        <span className='badge badge-ghost badge-xs tracking-widest mr-2 mb-2 '> {moment(a.createdAt).fromNow()}</span>
                         {moment(a.createdAt).format("dddd, Do MMMM YYYY [at] h:mm a")}
                     </div>
 

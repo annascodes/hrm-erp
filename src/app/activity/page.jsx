@@ -56,7 +56,7 @@ const page = () => {
 
                 </div>
 
-                <div className='flex flex-row items-center gap-2'>
+                <div className='flex flex-row flex-wrap justify-center items-center gap-2'>
                     <input onChange={(e) => setDate(e.target.value)} type="date" className="input" />
                     <select defaultValue="Pick a color" className="select w-60">
                         <option disabled={true}>Pick tag</option>
@@ -77,7 +77,7 @@ const page = () => {
                 loading && <div className='flex flex-row justify-center p-10'><span className='loading loading-spinner '></span></div>
             }
 
-            <div>
+            <div className='flex justify-end'>
                 <button
                     onClick={() => {
                         setActivities(null)
