@@ -8,6 +8,20 @@ export async function POST(req) {
     const body = await req.json()
     // console.log(body)
 
+    if (!body?.email || body?.email.trim() === '' || !(body?.email.includes('@'))) {
+        return NextResponse.json({error: 'Enter valid email ! '},{status: 409})
+    }
+    if (!body?.username || body?.username.trim() === '') {
+        return NextResponse.json({error: 'Enter valid username ! '},{status: 409})
+    }
+    if (!body?.password || body?.password === '') {
+        return NextResponse.json({error: 'Enter valid password ! '},{status: 409})
+    }
+ 
+
+
+
+
     await dbConnect()
     const isExist = await User.findOne(
         {

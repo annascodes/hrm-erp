@@ -2,8 +2,10 @@
 import EmployeeForm from '@/components/EmployeeForm';
 import EmployeeForm2 from '@/components/EmployeeForm2';
 import ErrDiv from '@/components/ErrDiv';
+import Loading from '@/components/Loading';
 import UserRegistrationForm from '@/components/UserRegForm'
 import useApiReq from '@/lib/hooks/useApiReq';
+import { redirect } from 'next/navigation';
 import React, { use, useEffect } from 'react'
 import toast from 'react-hot-toast';
 
@@ -25,12 +27,17 @@ const page = ({ params }) => {
     useEffect(() => {
         if (UpdUserRes) {
             toast.success('User is updated successfully.')
+            redirect(`/profile/${UpdUserRes.username}`)
         }
         if (UpdUserErr) {
             toast.error('Failed updation process.')
         }
 
     }, [UpdUserRes, UpdUserErr])
+    if(loading){
+        return <Loading container={true}/>
+    }
+
     return (
         <div>
 

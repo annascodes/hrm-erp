@@ -76,6 +76,16 @@ const NavLinks = () => {
                 <>
                     <li><Link href={'/users'}>Users</Link></li>
                     <li>
+                        <details>
+                            <summary>Create</summary>
+                            <ul className="p-2 z-10">
+                                <li className='md:min-w-44' ><Link href={'/users/create/fromscratch'}>Create User</Link></li>
+                                <li className='md:min-w-44'><Link href={'/users/create/noemployeeid'}>Assign Employee ID</Link></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li><Link href={'/users'}>Users</Link></li>
+                    <li>
                         <Link
                             className='flex justify-start items-center gap-1'
                             href={'/leaves'}

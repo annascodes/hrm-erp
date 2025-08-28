@@ -2,6 +2,7 @@
 import EmployeeForm from '@/components/EmployeeForm';
 import EmployeeForm2 from '@/components/EmployeeForm2';
 import ErrDiv from '@/components/ErrDiv';
+import Loading from '@/components/Loading';
 import UserRegistrationForm from '@/components/UserRegForm'
 import useApiReq from '@/lib/hooks/useApiReq';
 import React, { use, useEffect } from 'react'
@@ -11,7 +12,7 @@ const page = ({ params }) => {
     const unWrapParams = use(params);
     const { userId } = unWrapParams;
     const { request, data, loading, err } = useApiReq()
-    const {request:UpdEmp, data:UpdEmpRes, loading:UpdEmpLoading, err:UpdEmpErr} = useApiReq()
+    const { request: UpdEmp, data: UpdEmpRes, loading: UpdEmpLoading, err: UpdEmpErr } = useApiReq()
     useEffect(() => {
         request(`/api/user/${userId}`)
     }, [])
@@ -19,17 +20,20 @@ const page = ({ params }) => {
 
     const handleUpdate = (data) => {
         // console.log('updating user ', data)
-        if(data.userId)
+        if (data.userId)
             UpdEmp(`/api/employee/${data.userId}`, 'PUT', data)
-       
+
     }
-    useEffect(()=>{
-        if(UpdEmpRes){
+    useEffect(() => {
+        if (UpdEmpRes) {
             toast.success('Employee updated successfully.')
         }
-        
 
-    },[UpdEmpRes, UpdEmpErr])
+
+    }, [UpdEmpRes, UpdEmpErr])
+    if (loading) {
+        return <Loading container={true} />
+    }
     return (
         <div>
 
@@ -47,10 +51,10 @@ const page = ({ params }) => {
             }
 
 
-{
-    UpdEmpErr &&
-    <ErrDiv error={UpdEmpErr.error}  />
-}
+            {
+                UpdEmpErr &&
+                <ErrDiv error={UpdEmpErr.error} />
+            }
             {/* <pre className='text-xs my-20'>
                 {data && JSON.stringify(data, null, 10)}
             </pre> */}

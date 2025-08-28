@@ -7,6 +7,10 @@ import { NextResponse } from "next/server"
 export async function GET() {
     try {
         const token = (await cookies()).get('token').value;
+        // if(!token){
+        //     console.log('no token-> api/user/me GET-method.')
+        //     return 
+        // }
         const isVerified = verifyToken(token)
         if (!isVerified) return NextResponse.json({ error: 'Failed authorization/authentication' }, { status: 401 })
 

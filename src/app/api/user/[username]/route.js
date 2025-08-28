@@ -27,6 +27,18 @@ export async function POST(req, { params }) {
     if (!(auth.role === 'admin' || auth.role === 'hr' || auth.id === user._id.toString()))
         return NextResponse.json({ error: 'not authorized to do this action' }, { status: 403 })
     const body = await req.json()
+    console.log(`------------------`.bgYellow)
+    console.log(body)
+
+    if (!body?.email || body.email.trim() === '' || !body?.email.includes('@')) {
+        return NextResponse.json({error: 'Enter valid email!!!'},{status: 409})
+    }
+    if (!body?.username || body.username.trim() === '') {
+        return NextResponse.json({error: 'Enter valid username!!!'},{status: 409})
+    }
+ 
+
+
     let hashedPass = null;
     if (body.password?.trim())
         hashedPass = await bcrypt.hash(body.password.trim(), 10)
@@ -37,8 +49,8 @@ export async function POST(req, { params }) {
             user._id,
             {
                 $set: {
-                    ...(body.username !== user.username && { username: body.username }),
-                    ...(body.email !== user.email && { email: body.email }),
+                    ...(body.username !== user.username && { username: body.username.trim() }),
+                    ...(body.email !== user.email && { email: body.email.trim() }),
                     ...(hashedPass && { password: hashedPass })
                 }
             },
