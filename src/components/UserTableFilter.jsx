@@ -3,7 +3,7 @@ import RoleBadges from './RoleBadges'
 import { LiaFilterSolid } from "react-icons/lia";
 
 
-const UserTableFilter = () => {
+const UserTableFilter = ({handle=null}) => {
     const [formData, setFormData] = useState()
     const handleChange = (e) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -15,7 +15,7 @@ const UserTableFilter = () => {
     return (
         <tr className='mb-4'>
             <th></th>
-             
+
             <th>
                 <input type="text"
                     name='username'
@@ -57,19 +57,19 @@ const UserTableFilter = () => {
                         <option value="employee"> <RoleBadges role='employee' /></option>
                     </select>
                 </div>
-                 <button onClick={handleFilter} className='btn btn-neutral btn-outline btn-sm flex justify-center items-center gap-1 border-none tracking-widest'>
-                  <LiaFilterSolid  className='text-2xl ' />
-                  filter
+                <button onClick={handleFilter} className='btn btn-neutral btn-outline btn-sm flex justify-center items-center gap-1 border-none tracking-widest'>
+                    <LiaFilterSolid className='text-2xl ' />
+                    filter
                 </button>
             </th>
 
-            
 
-            
+
+
             {/* <th> </th> */}
             {/* <th> </th> */}
 
-           
+
         </tr>
     )
 }

@@ -17,8 +17,8 @@ const Hero = () => {
             <h1 className="text-5xl font-bold">HRM-ERP system.</h1>
             <p className="py-6">
               Manage everything and anything in one place. This is humane resource management system where you can manage your employees and their related actions.
-
             </p>
+            
             {
               !currentUser && <>
                 <Link href={'/register'} className="btn btn-primary ml-2 ">Get Registered</Link>

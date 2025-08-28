@@ -30,3 +30,5 @@ export const ActivityActions = [
     'Update User',
     'Update Employee',
 ]
+
+export const shadowAround = 'shadow-[0_0_15px_rgba(0,0,0,0.15)]'
