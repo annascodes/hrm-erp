@@ -37,14 +37,15 @@ const ActivityLogDiv = ({ action: a = null }) => {
 
                 </h1>
 
-                <div className='flex justify-between'>
+                <div className='flex  justify-between'>
+                    <DynamicTableBtn id={a._id} name={a?.target} data={a.targetId} />
+
                     <div className='[word-spacing:0.1rem] text-xs '>
 
                         <span className='badge badge-ghost badge-xs tracking-widest mr-2 mb-2 '> {moment(a.createdAt).fromNow()}</span>
                         {moment(a.createdAt).format("dddd, Do MMMM YYYY [at] h:mm a")}
                     </div>
 
-                    <DynamicTableBtn id={a._id} name={a?.target} data={a.targetId} />
                 </div>
 
 

@@ -1,7 +1,10 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Hero = () => {
+  const { currentUser } = useSelector(state => state.user)
   return (
     <div  >
       <div className="hero bg-base-200 min-h-screen">
@@ -13,11 +16,16 @@ const Hero = () => {
           <div className=" max-w-2xl">
             <h1 className="text-5xl font-bold">HRM-ERP system.</h1>
             <p className="py-6">
-                          Manage everything and anything in one place. This is humane resource management system where you can manage your employees and their related actions.
+              Manage everything and anything in one place. This is humane resource management system where you can manage your employees and their related actions.
 
             </p>
-            <Link href={'/register'}  className="btn btn-primary ml-2 ">Get Registered</Link>
-            <Link href={'/login'} className="btn btn-primary btn-outline  ml-2">Let's login.</Link>
+            {
+              !currentUser && <>
+                <Link href={'/register'} className="btn btn-primary ml-2 ">Get Registered</Link>
+                <Link href={'/login'} className="btn btn-primary btn-outline  ml-2">Let's login.</Link>
+              </>
+            }
+
           </div>
         </div>
       </div>

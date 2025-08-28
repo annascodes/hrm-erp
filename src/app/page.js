@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Hero />
 
-      <div
+      {/* <div
         className="hero min-h-screen"
         style={{
           backgroundImage:
@@ -24,7 +24,7 @@ export default function Home() {
             <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
