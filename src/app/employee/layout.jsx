@@ -1,5 +1,6 @@
 'use client'
 import LinkBtn from '@/components/LinkBtn'
+import LinkBtnAdv from '@/components/LinkBtnAdv'
 import LinkCarousel from '@/components/LinkCarousel'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -20,32 +21,34 @@ const layout = ({ children }) => {
                     <LinkBtn href={'/employee/leaveapplication'}
                         activeOn={`/employee/leaveapplication`}
                         className={''}
-                        btnSize={'lg:btn btn-xs hover:text-white'}
+                        btnSize={'lg:btn-md btn-xs '}
                         name={<> <LuCalendarX className='text-base' /> Leaves  </>}
                     />
 
                     <LinkBtn
                         href={'/employee/calender'}
-                        className={'  '}
-                        btnSize={'lg:btn btn-xs hover:text-white'}
+                        className={''}
+                        btnSize={'lg:btn-md btn-xs '}
                         name={<> <FiCalendar className='text-base' /> Calender  </>}
                     />
+
+                    
                     <LinkBtn
                         href={'/employee/projects'}
                         className={' '}
-                          btnSize={'lg:btn btn-xs hover:text-white'}
+                          btnSize={'lg:btn-md btn-xs   '}
                         name={<> <FiFolder className='text-base' /> Projects  </>}
                     />
                     <LinkBtn
                         href={'/employee/reports'}
                         className={' '} 
-                          btnSize={'lg:btn btn-xs hover:text-white'}
+                          btnSize={'lg:btn-md btn-xs  '}
                        name={<> <FiBarChart2 className='text-base' /> Reporsts  </>}
                     />
                     <LinkBtn
                         href={'/employee/notes'}
                         className={' '}
-                          btnSize={'lg:btn btn-xs hover:text-white'}
+                          btnSize={'lg:btn-md btn-xs '}
                         name={<> <FiFileText className='text-base' /> Notes  </>}
                     />
                 </div>
