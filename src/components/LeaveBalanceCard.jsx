@@ -30,7 +30,9 @@ export default function LeaveBalanceCard({ leaveBalance }) {
   return (
     <div className="flex flex-col gap-4 p-5 rounded-xl bg-white shadow-[0_0_15px_rgba(0,0,0,0.15)]">
 
-                    <h1 className="btn btn-primary btn-xs tracking-wider  cursor-default  text-sm">Leave balance card</h1>
+                    <h1 className="btn btn-primary btn-xs tracking-wider  cursor-default  text-sm">
+                        Leave balance card
+                    </h1>
       {/* Annual */}
       <div className="flex flex-row items-center gap-3">
         <FaUmbrellaBeach className="text-xl text-green-500" />

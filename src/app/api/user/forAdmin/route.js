@@ -11,12 +11,12 @@ export async function GET(req) {
     const startindex = searchParams.get('startindex')
     const limit = searchParams.get('limit')
 
-    console.log(username)
-    console.log(email)
-    console.log(createdAt)
-    console.log(role)
-    console.log(startindex)
-    console.log(limit)
+    // console.log(username)
+    // console.log(email)
+    // console.log(createdAt)
+    // console.log(role)
+    // console.log(startindex)
+    // console.log(limit)
 
 
 

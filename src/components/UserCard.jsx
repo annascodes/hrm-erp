@@ -7,7 +7,7 @@ import DynamicTableBtn from "./DynamicTableBtn";
 import { shadowAround } from "@/lib/helperFunctions";
 
 export default function UserCard({ data }) {
-    console.log(data)
+    // console.log(data)
   return (
     <div className={ `   flex flex-col gap-4 p-5 rounded-xl bg-white ${shadowAround}`}>
       

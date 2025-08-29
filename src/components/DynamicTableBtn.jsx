@@ -1,7 +1,7 @@
 import React from 'react'
 import DynamicTable from './DynamicTable'
 
-const DynamicTableBtn = ({id,name=null, data, className='btn btn-neutral btn-outline btn-xs tracking-wider', heading=null }) => {
+const   DynamicTableBtn = ({id,name=null, data, className='btn btn-neutral btn-outline btn-xs tracking-wider', heading=null }) => {
     return (
         <div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
