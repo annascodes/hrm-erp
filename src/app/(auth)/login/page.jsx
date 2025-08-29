@@ -9,9 +9,10 @@ import toast from 'react-hot-toast'
 import { signIn } from '@/lib/redux/user/userSlice'
 import { useDispatch } from 'react-redux'
 import ErrDiv from '@/components/ErrDiv'
+import { shadowAround } from '@/lib/helperFunctions'
 
 const page = () => {
-    const {login} = useUser()
+    const { login } = useUser()
     const dispatch = useDispatch()
     const [username, setUsername] = useState(null)
     const [password, setPassword] = useState(null)
@@ -19,56 +20,66 @@ const page = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        if(!username || username.trim() === ''){
+        if (!username || username.trim() === '') {
             toast.error('Enter valid username !!!')
             return
         }
-        if(!password || password === ''){
+        if (!password || password === '') {
             toast.error('Enter valid password !!!')
             return
         }
-            
+
         // console.log('username', username)
         // console.log('password', password)
         request(`/api/login`, 'POST', { username, password })
     }
     useEffect(() => {
-        if (data){
+        if (data) {
             toast.success('Welcome to HRM.')
             console.log(data)
             login(data)
-            dispatch(signIn({...data, redux: true}))
+            dispatch(signIn({ ...data, redux: true }))
             redirect('/')
         }
     }, [data])
-    useEffect(()=>{
-        if(err && err.error){
+    useEffect(() => {
+        if (err && err.error) {
             toast.error(err.error)
             console.log(err)
         }
 
     }, [err])
     return (
-        <div>
-            <h1 className='text-center text-4xl font-extrabold mt-10'>Login</h1>
-            <form action=""
-                className='p-5 md:w-6/12 lg:w-4/12 mx-auto '
-            // className='p-5'
-            >
-                <InputField prompt={'Username'} className={'w-full'} setValue={setUsername} />
-                <InputField prompt={'Password'} className={'w-full'} type={'password'} setValue={setPassword} />
+        <div className='flex flex-row  flex-wrap justify-center md:h-svh gap-5 items-center '>
+            <div className='max-w-xl '>
+                <h1 className="text-5xl font-bold text-center m-2">HRM<span className='text-sm md:text-2xl'> ERP system.</span> </h1>
+                <p className="hidden md:block py-6">
+                    Manage everything and anything in one place. This is humane resource management system where you can manage your employees and their related actions.
+                </p>
 
-                {
-                    err && 
-                    <ErrDiv error={err?.error} />
-                }
-                <div className='flex justify-center '>
-                    <button disabled={loading} onClick={handleLogin} className='btn btn-neutral btn-outline btn-sm mt-5'>
-                        {loading ? <Loading/> : 'Login' }
-                    </button>
-                </div>
-            </form>
+            </div>
 
+            <div className={ `max-w-xl  min-w-sm ${shadowAround} rounded-4xl m-2`}>
+                <h1 className='text-center text-4xl font-extrabold mt-10'>Login</h1>
+                <form action=""
+                    // className='p-5 md:w-6/12 lg:w-4/12 mx-auto '
+                className='p-5'
+                >
+                    <InputField prompt={'Username'} className={'w-full'} setValue={setUsername} />
+                    <InputField prompt={'Password'} className={'w-full '} type={'password'} setValue={setPassword} />
+
+                    {
+                        err &&
+                        <ErrDiv error={err?.error} />
+                    }
+                    <div className='flex justify-center '>
+                        <button disabled={loading} onClick={handleLogin} className='btn btn-neutral btn-outline btn-sm mt-5'>
+                            {loading ? <Loading /> : 'Login'}
+                        </button>
+                    </div>
+                </form>
+
+            </div>
         </div>
     )
 }

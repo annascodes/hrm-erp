@@ -90,7 +90,8 @@ export async function PUT(req, {params}) {
 
     const body = await  req.json()
     await dbConnect()
-    const employee = await Employee.findOne({userId})
+ 
+    const employee = await Employee.findOne({userId: userId})
     if(!employee)
         return NextResponse.json({error: 'No employee found under this userId'}, {status: 404})
 

@@ -21,14 +21,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
-const LinkBtn = ({ href = null, name, className = null, activeOn = null }) => {
+const LinkBtn = ({ href = null, name, className = null, activeOn = null, btnSize='btn-xs' }) => {
     const pathName = usePathname()
     // console.log('pathName: ',pathName)
     // console.log('activeOn: ', activeOn)
     return (
         <Link
             href={href}
-            className={`btn btn-neutral btn-outline btn-xs tracking-widest uppercase flex items-center gap-1 
+            className={`btn btn-neutral btn-outline ${btnSize} tracking-widest uppercase flex items-center gap-1 
             ${pathName.includes(activeOn) && 'bg-black text-white'} 
             ${pathName === href && 'bg-black text-white'} 
             ${className}`}>

@@ -18,10 +18,10 @@ const page = ({ params }) => {
     }, [])
 
 
-    const handleUpdate = (data) => {
-        // console.log('updating user ', data)
-        if (data.userId)
-            UpdEmp(`/api/employee/${data.userId}`, 'PUT', data)
+    const handleUpdate = (arg) => {
+        console.log('sending this to api as arg:', arg)
+        if (arg.userId)
+            UpdEmp(`/api/employee/${arg.userId._id}`, 'PUT', arg)
 
     }
     useEffect(() => {

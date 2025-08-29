@@ -39,7 +39,7 @@ const page = () => {
     }, [data, err])
     return loading ? <Loading /> : (
         <div>
-            <h1 className='text-2xl  font-bold mb-5' > All leaves</h1>
+            <h1 className='text-2xl  font-bold mb-5 text-center' > All leaves</h1>
 
             {/* {
                 allLeaves && <pre>{JSON.stringify(allLeaves, null, 10)}</pre>
