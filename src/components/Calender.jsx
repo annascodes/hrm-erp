@@ -46,7 +46,7 @@ const Calendar = ({ userData = [] }) => {
     // console.log('userMap:' ,userMap)
     // console.log('days:' ,days)
     return (
-        <div className="w-full max-w-7xl mx-auto px-4">
+        <div className="w-full max-w-7xl mx-auto px-4 mb-5">
                 <h1 className="hidden md:flex text-3xl font-bold text-center mb-6">Employee Calendar {currentYear} </h1>
 
             {/*left------- buttons--------- right  */}

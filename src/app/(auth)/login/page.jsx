@@ -14,8 +14,8 @@ import { shadowAround } from '@/lib/helperFunctions'
 const page = () => {
     const { login } = useUser()
     const dispatch = useDispatch()
-    const [username, setUsername] = useState(null)
-    const [password, setPassword] = useState(null)
+    const [username, setUsername] = useState('anas')
+    const [password, setPassword] = useState('123')
     const { request, data, loading, err } = useApiReq()
 
     const handleLogin = (e) => {
@@ -69,13 +69,27 @@ const page = () => {
 
             <div className={`max-w-xl  min-w-sm ${shadowAround}  rounded-4xl m-2`}>
                 <h1 className='text-center text-4xl font-extrabold mt-10'>Login</h1>
-                <div>
-                    <h1 className='text-yellow-200 tracking-widest text-xs'>demo credentials</h1>
-                    <div>
-                        <span className='opacity-55'>Username</span> <span>anas</span>
-                    </div>
-                    <div>
-                        <span className='opacity-55'>Password</span> <span>123</span>
+                <div className=' mx-5 bg-yellow-200 p-2 rounded-2xl  my-1 animate-pulse'>
+                    <h1 className='text-yellow-500 tracking-widest text-xs text-center animate-bounce '>demo</h1>
+                    <div className='flex items-center justify-between'>
+                        <div className='w-2/3'>
+                              <h1 className=' text-xs tracking-widest badge badge-outline badge-neutral'> admin</h1>
+                            <div>
+                                <span className='opacity-55 text-xs'>Username</span> <span>anas</span>
+                            </div>
+                            <div>
+                                <span className='opacity-55 text-xs'>Password</span> <span>123</span>
+                            </div>
+                        </div>
+                        <div className='w-1/3'>
+                            <h1 className=' text-xs tracking-widest badge badge-outline badge-neutral'> employee</h1>
+                            <div>
+                                <span className='opacity-55 text-xs'>Username</span> <span>baber</span>
+                            </div>
+                            <div>
+                                <span className='opacity-55 text-xs'>Password</span> <span>123</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <form action=""

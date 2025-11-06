@@ -84,7 +84,7 @@ const NavLinks = () => {
                             </ul>
                         </details>
                     </li>
-                    <li><Link href={'/users'}>Users</Link></li>
+                    {/* <li><Link href={'/users'}>Users</Link></li> */}
                     <li>
                         <Link
                             className='flex justify-start items-center gap-1'
@@ -105,7 +105,7 @@ const NavLinks = () => {
             {
                 (user && user.role === 'employee') &&
                 <>
-                    <li><Link href={'/employee'}>Employee</Link></li>
+                    <li><Link href={'/employee/leaveapplication'}>Employee</Link></li>
                 </>
             }
 
