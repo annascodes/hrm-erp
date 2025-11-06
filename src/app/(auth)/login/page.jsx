@@ -49,9 +49,17 @@ const page = () => {
         }
 
     }, [err])
+
+    // https://images.unsplash.com/photo-1713351531261-4dba3f6e8431?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     return (
-        <div className='flex flex-row  flex-wrap justify-center md:h-svh gap-5 items-center '>
-            <div className='max-w-xl '>
+        <div className='flex flex-row  flex-wrap justify-center md:h-svh gap-5 items-center '
+
+        // style={{
+        //     backgroundImage:
+        //         "url(https://i.pinimg.com/736x/10/1b/38/101b3830574f65db7171b088c6d9c4d9.jpg)",
+        // }}
+        >
+            <div className='max-w-xl   p-5 rounded-4xl  '>
                 <h1 className="text-5xl font-bold text-center m-2">HRM<span className='text-sm md:text-2xl'> ERP system.</span> </h1>
                 <p className="hidden md:block py-6">
                     Manage everything and anything in one place. This is humane resource management system where you can manage your employees and their related actions.
@@ -59,11 +67,20 @@ const page = () => {
 
             </div>
 
-            <div className={ `max-w-xl  min-w-sm ${shadowAround} rounded-4xl m-2`}>
+            <div className={`max-w-xl  min-w-sm ${shadowAround}  rounded-4xl m-2`}>
                 <h1 className='text-center text-4xl font-extrabold mt-10'>Login</h1>
+                <div>
+                    <h1 className='text-yellow-200 tracking-widest text-xs'>demo credentials</h1>
+                    <div>
+                        <span className='opacity-55'>Username</span> <span>anas</span>
+                    </div>
+                    <div>
+                        <span className='opacity-55'>Password</span> <span>123</span>
+                    </div>
+                </div>
                 <form action=""
                     // className='p-5 md:w-6/12 lg:w-4/12 mx-auto '
-                className='p-5'
+                    className='p-5'
                 >
                     <InputField prompt={'Username'} className={'w-full'} setValue={setUsername} />
                     <InputField prompt={'Password'} className={'w-full '} type={'password'} setValue={setPassword} />

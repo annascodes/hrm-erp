@@ -10,6 +10,7 @@ const employeeSchema = new mongoose.Schema({
   address: String,
   dateOfBirth: Date,
   hireDate: { type: Date, required: true },
+  
   jobTitle: String,
   department: String,
   salary: Number,
